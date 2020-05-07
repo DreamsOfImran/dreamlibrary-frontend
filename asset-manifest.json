@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/dreamlibrary-frontend/static/css/main.d01c3ce6.chunk.css",
+    "main.js": "/dreamlibrary-frontend/static/js/main.6af3f0b6.chunk.js",
+    "main.js.map": "/dreamlibrary-frontend/static/js/main.6af3f0b6.chunk.js.map",
+    "runtime-main.js": "/dreamlibrary-frontend/static/js/runtime-main.fc18a006.js",
+    "runtime-main.js.map": "/dreamlibrary-frontend/static/js/runtime-main.fc18a006.js.map",
+    "static/css/2.b49456b9.chunk.css": "/dreamlibrary-frontend/static/css/2.b49456b9.chunk.css",
+    "static/js/2.c432f75a.chunk.js": "/dreamlibrary-frontend/static/js/2.c432f75a.chunk.js",
+    "static/js/2.c432f75a.chunk.js.map": "/dreamlibrary-frontend/static/js/2.c432f75a.chunk.js.map",
+    "index.html": "/dreamlibrary-frontend/index.html",
+    "precache-manifest.628d77f69319a03d6d814554828918b0.js": "/dreamlibrary-frontend/precache-manifest.628d77f69319a03d6d814554828918b0.js",
+    "service-worker.js": "/dreamlibrary-frontend/service-worker.js",
+    "static/css/2.b49456b9.chunk.css.map": "/dreamlibrary-frontend/static/css/2.b49456b9.chunk.css.map",
+    "static/css/main.d01c3ce6.chunk.css.map": "/dreamlibrary-frontend/static/css/main.d01c3ce6.chunk.css.map",
+    "static/js/2.c432f75a.chunk.js.LICENSE.txt": "/dreamlibrary-frontend/static/js/2.c432f75a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fc18a006.js",
+    "static/css/2.b49456b9.chunk.css",
+    "static/js/2.c432f75a.chunk.js",
+    "static/css/main.d01c3ce6.chunk.css",
+    "static/js/main.6af3f0b6.chunk.js"
+  ]
+}
