@@ -24,6 +24,9 @@ const App = () => {
     shallowEqual
   );
   useEffect(() => {
+    if (!isAuthorized && location.pathname !== "/register") {
+      history.push("/login");
+    }
     if (
       isAuthorized &&
       (location.pathname === "/login" || location.pathname === "/register")
