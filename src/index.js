@@ -1,17 +1,31 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap/js/dist/dropdown";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import "./css/main.css";
+import React from "react";
+import ReactDOM from "react-dom";
+import { BrowserRouter as Router } from "react-router-dom";
+import axios from "axios";
+import App from "./App";
+import { setupAxios, loadState, saveState } from "./utils/utils";
+import configureStore from "./redux/configureStore";
+import { Provider as ReduxProvider } from "react-redux";
+
+const persistedState = loadState();
+const store = configureStore(persistedState);
+
+store.subscribe(() => {
+  saveState(store.getState());
+});
+
+setupAxios(axios, store);
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <ReduxProvider store={store}>
+    <Router>
+      <App />
+    </Router>
+  </ReduxProvider>,
+  document.getElementById("root")
 );
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
