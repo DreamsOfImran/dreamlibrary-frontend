@@ -10,6 +10,7 @@ import BooksPage from "./components/pages/admin/BooksPage";
 import NavBar from "./components/NavBar";
 import AddBook from "./components/pages/admin/AddBook";
 import BookPage from "./components/pages/BookPage";
+import Logout from "./components/pages/Logout";
 
 toast.configure();
 
@@ -49,6 +50,7 @@ const App = () => {
         ) : null}
         <Route path="/" exact component={Home} />
         <Route path="/book/:id" component={BookPage} />
+        <Route path="/logout" component={Logout} />
         <Route path="/admin/books/new" component={AddBook} />
         <Route path="/admin/books" component={BooksPage} />
       </Switch>

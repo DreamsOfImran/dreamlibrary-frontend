@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
 
 const NavBar = (props) => {
@@ -81,10 +81,30 @@ const NavBar = (props) => {
                 <FaShoppingCart /> Cart
               </NavLink>
             </li>
-            <li className="nav-item active">
-              <NavLink className="nav-link" to="/login">
+            <li className="nav-item active dropdown">
+              <NavLink
+                className="nav-link dropdown-toggle"
+                to="/"
+                id="userDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
                 {props.user?.first_name}
               </NavLink>
+              <div className="dropdown-menu" aria-labelledby="userDropdown">
+                <NavLink className="dropdown-item" to="/my_profile">
+                  My Profile
+                </NavLink>
+                <a className="dropdown-item" href="/">
+                  Borrowed Books
+                </a>
+                <div className="dropdown-divider"></div>
+                <Link className="dropdown-item" to="/logout">
+                  Logout
+                </Link>
+              </div>
             </li>
           </ul>
         </div>
