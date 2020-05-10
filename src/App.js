@@ -17,10 +17,11 @@ toast.configure();
 const App = () => {
   const history = useHistory();
   const location = useLocation();
-  const { isAuthorized, user } = useSelector(
-    ({ auth }) => ({
+  const { isAuthorized, user, cart } = useSelector(
+    ({ auth, cart }) => ({
       isAuthorized: auth.token != null,
       user: auth.user,
+      cart: cart,
     }),
     shallowEqual
   );
@@ -39,7 +40,7 @@ const App = () => {
     <>
       {location.pathname === "/login" ||
       location.pathname === "/register" ? null : (
-        <NavBar user={user} />
+        <NavBar user={user} cart={cart} />
       )}
       <Switch>
         {!isAuthorized ? (
@@ -54,6 +55,14 @@ const App = () => {
         <Route path="/admin/books/new" component={AddBook} />
         <Route path="/admin/books" component={BooksPage} />
       </Switch>
+      {location.pathname === "/login" ||
+      location.pathname === "/register" ? null : (
+        <footer id="sticky-footer" class="py-4 bg-dark text-white-50">
+          <div class="container text-center">
+            <small>Copyright &copy; DreamsOfImran</small>
+          </div>
+        </footer>
+      )}
     </>
   );
 };

@@ -16,13 +16,13 @@ const Book = (props) => {
             <h2>{props.title}</h2>
           </Link>
           {props.status ? (
-            <a className="info" href={"/book/" + props._id}>
+            <Link className="info" to={"/book/" + props._id}>
               Remove from cart
-            </a>
+            </Link>
           ) : (
-            <a className="info" href={"/book/" + props._id}>
+            <Link className="info" to={"/book/" + props._id}>
               Add to cart
-            </a>
+            </Link>
           )}
         </div>
       </div>

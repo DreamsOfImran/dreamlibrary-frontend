@@ -1,7 +1,9 @@
+import actionTypes from "./actionTypes";
+
 export function loginUser(payload) {
-  return { type: "LOGIN_USER", payload };
+  return { type: actionTypes.Login, payload };
 }
 
 export function logoutUser() {
-  return { type: "LOGOUT_USER" };
+  return { type: actionTypes.Logout };
 }

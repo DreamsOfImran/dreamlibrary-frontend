@@ -1,24 +1,36 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { connect } from "react-redux";
 import Carousel from "../Carousel";
 import BookList from "../BookList";
+import { bookList } from "../../crud/book.crud";
+import * as cartActions from "../../redux/actions/cartActions";
+import * as bookActions from "../../redux/actions/bookActions";
+import { cartList } from "../../crud/cart.crud";
 
 const Home = (props) => {
-  const [books, setBooks] = useState([]);
   useEffect(() => {
-    axios.get("/book/list").then((response) => {
-      setBooks(response.data.books);
+    cartList().then((response) => {
+      props.loadCartList(response.data.cartList);
     });
-  }, []);
+    bookList().then((response) => {
+      props.loadBookList(response.data.books);
+    });
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
   return (
     <div>
       <Carousel />
       <div className="container">
         <h1 className="text-center">Latest Collections</h1>
-        <BookList books={books} />
+        <BookList books={props.state.books} />
       </div>
     </div>
   );
 };
 
-export default Home;
+function mapStateToProps(state) {
+  return { state };
+}
+
+export default connect(mapStateToProps, { ...cartActions, ...bookActions })(
+  Home
+);

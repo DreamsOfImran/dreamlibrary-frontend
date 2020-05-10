@@ -66,11 +66,11 @@ const NavBar = (props) => {
                   <NavLink className="dropdown-item" to="/admin/books">
                     Books
                   </NavLink>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="/">
                     Categories
                   </a>
                   <div className="dropdown-divider"></div>
-                  <a className="dropdown-item" href="#">
+                  <a className="dropdown-item" href="/">
                     Users
                   </a>
                 </div>

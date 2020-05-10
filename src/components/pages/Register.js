@@ -1,7 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
+import { register } from "../../crud/user.crud";
 
 const Register = (props) => {
+  const [values, setValues] = useState({
+    first_name: "",
+    last_name: "",
+    email: "",
+    password: "",
+  });
+  const onSubmitHandler = async (event) => {
+    event.preventDefault();
+    register(values)
+      .then(() => {
+        toast.success("User created successfully");
+        props.history.push("/login");
+      })
+      .catch((err) => {
+        toast.error("Something went wrong");
+        console.log(err);
+      });
+  };
   return (
     <>
       <div className="sidenav">
@@ -16,7 +36,7 @@ const Register = (props) => {
       <div className="main">
         <div className="col-md-6 col-sm-12">
           <div className="login-form">
-            <form>
+            <form onSubmit={onSubmitHandler}>
               <div className="form-group">
                 <label>First Name</label>
                 <input
@@ -25,6 +45,10 @@ const Register = (props) => {
                   className="form-control"
                   placeholder="First Name"
                   required
+                  value={values.first_name}
+                  onChange={(e) =>
+                    setValues({ ...values, first_name: e.target.value })
+                  }
                 />
               </div>
               <div className="form-group">
@@ -35,6 +59,10 @@ const Register = (props) => {
                   className="form-control"
                   placeholder="Last Name"
                   required
+                  value={values.last_name}
+                  onChange={(e) =>
+                    setValues({ ...values, last_name: e.target.value })
+                  }
                 />
               </div>
               <div className="form-group">
@@ -45,6 +73,10 @@ const Register = (props) => {
                   className="form-control"
                   placeholder="Email"
                   required
+                  value={values.email}
+                  onChange={(e) =>
+                    setValues({ ...values, email: e.target.value })
+                  }
                 />
               </div>
               <div className="form-group">
@@ -55,6 +87,10 @@ const Register = (props) => {
                   className="form-control"
                   placeholder="Password"
                   required
+                  value={values.password}
+                  onChange={(e) =>
+                    setValues({ ...values, password: e.target.value })
+                  }
                 />
               </div>
               <div className="form-group">

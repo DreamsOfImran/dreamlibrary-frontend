@@ -13,10 +13,10 @@ import configureStore from "./redux/configureStore";
 import { Provider as ReduxProvider } from "react-redux";
 
 const persistedState = loadState();
-const store = configureStore(persistedState);
+const store = configureStore({ auth: persistedState });
 
 store.subscribe(() => {
-  saveState(store.getState());
+  saveState(store.getState().auth);
 });
 
 setupAxios(axios, store);

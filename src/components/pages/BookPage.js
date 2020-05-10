@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { addToCart, removeFromCart } from "../../utils/crud";
+import { addToCart, removeFromCart } from "../../crud/cart.crud";
 
 const BookPage = (props) => {
   const [book, setBook] = useState({});
@@ -12,7 +12,7 @@ const BookPage = (props) => {
         setCartStatus(res.data.cart);
       });
     });
-  }, []);
+  }, [props.match.params.id]);
   const addToCartHandler = () => {
     addToCart(book._id);
     setCartStatus(true);

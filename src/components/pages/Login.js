@@ -1,27 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
 import { connect } from "react-redux";
 import * as authActions from "../../redux/actions/authActions";
+import { login } from "../../crud/auth.crud";
 
 const Login = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const onSubmitHandler = async (event) => {
     event.preventDefault();
-    axios
-      .post("/auth/login", { email, password })
-      .then((response) => {
-        props.dispatch(authActions.loginUser(response.data));
-        props.history.push("/");
-      })
-      .catch((error) => {
-        if (!!error.response) {
-          console.log(error.response.data);
-        } else {
-          console.log(error);
-        }
-      });
+    login(email, password).then((response) => {
+      props.loginUser(response.data);
+      props.history.push("/");
+    });
   };
   return (
     <>
@@ -75,8 +66,4 @@ const Login = (props) => {
     </>
   );
 };
-
-function mapStateToProps(state) {
-  return { state };
-}
-export default connect(mapStateToProps)(Login);
+export default connect(null, authActions)(Login);

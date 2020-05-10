@@ -1,13 +1,15 @@
+import actionTypes from "../actions/actionTypes";
+
 const intialAuthState = {
   user: undefined,
   token: undefined,
 };
 
-export default function userReducer(state = intialAuthState, action) {
+export default function authReducer(state = intialAuthState, action) {
   switch (action.type) {
-    case "LOGIN_USER":
+    case actionTypes.Login:
       return { token: action.payload.token, user: action.payload.user };
-    case "LOGOUT_USER":
+    case actionTypes.Logout:
       return { token: undefined, user: undefined };
     default:
       return state;
